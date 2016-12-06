@@ -63,7 +63,7 @@ class NomadCLI
     else
       chart_choice_runner
     end
-    charts
+    choice
   end
 
   def main(city)

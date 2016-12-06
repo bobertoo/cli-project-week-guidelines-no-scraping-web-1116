@@ -11,6 +11,7 @@ class City
       puts "It is #{hash["info"]["weather"]["temperature"]["fahrenheit"]}℉ RIGHT NOWWW"
     end
 
+
     def weed?
       # binding.pry
       if hash["tags"].include?("legal weed")

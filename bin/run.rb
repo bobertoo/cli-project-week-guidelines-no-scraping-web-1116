@@ -1,6 +1,6 @@
 require_relative '../config/environment'
 
-CityCLI.new.call
+NomadCLI.new.call
 
 # CLI
 ## welcome message

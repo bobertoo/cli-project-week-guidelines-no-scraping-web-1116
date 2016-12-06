@@ -17,17 +17,18 @@ class NomadCLI
   def choice
     user_input = gets.strip
 
-    if user_input == "chart"
-      # enter chart menu
-    elsif user_input == "search"
+
+    if user_input == "search"
       puts "Enter your city:"
-      city_query = gets.strip
+      city_query = gets.strip.capitalize
       city = get_city(city_query)
       main(city)
     elsif user_input == "help"
       # help method
     elsif user_input == "exit"
       puts "Goodbye"
+    elsif user_input == "chart"
+      # enter chart menu
     else
       puts "Invalid option. Try harder."
       welcome
@@ -59,24 +60,23 @@ class NomadCLI
 
   def choice_runner(city)
     user_input = gets.strip
-
-    until user_input == "exit"
-      if user_input.to_s == "1"
-        city.weed?
-      elsif user_input.to_s == "2"
-        city.av_airbnb
-      elsif user_input.to_s == "3"
-        city.weather
-      elsif user_input.to_s == "4"
-        city.inet_speed
-      else
-        puts "PLEASE PUT IN A VALID OPTION"
-      end
-      @flag = true
+    if user_input.to_s == "1"
+      city.weed?
+    elsif user_input.to_s == "2"
+      city.av_airbnb
+    elsif user_input.to_s == "3"
+      city.weather
+    elsif user_input.to_s == "4"
+      city.inet_speed
+    elsif user_input != "exit"
+      puts "PLEASE PUT IN A VALID OPTION"
+    end
+    @flag = true
+    if user_input == "exit"
+      puts "Goodbye."
+    else
       main(city)
     end
-    binding.pry
-    puts "Goodbye."
   end
 
 

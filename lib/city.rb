@@ -8,7 +8,7 @@ class City
     end
 
     def weather
-      puts "#{hash["info"]["weather"]["temperature"]["fahrenheit"]}"
+      puts "It is #{hash["info"]["weather"]["temperature"]["fahrenheit"]}℉ RIGHT NOWWW"
     end
 
     def weed?

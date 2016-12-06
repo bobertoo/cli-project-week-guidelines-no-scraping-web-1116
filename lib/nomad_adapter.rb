@@ -8,11 +8,11 @@ class NomadAdapter
   end
 
   def search_hash
-    data = RestClient.get('https://nomadlist.com/api/v2/list/cities')
-    data = JSON.parse(data)
+    response = RestClient.get('https://nomadlist.com/api/v2/list/cities')
+    data = JSON.parse(response)
     result = data["result"].detect do | city |
       city["info"]["city"]["name"] == @query
     end
   end
-  
+
 end

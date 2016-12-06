@@ -1,5 +1,5 @@
 class City
-  attr_accessor :city_name, :country_name
+  attr_accessor :city_name, :country_name, :hash
 
     def initialize(hash)
       @hash = hash
@@ -7,12 +7,25 @@ class City
       @city_name = hash["info"]["city"]["name"]
     end
 
-    def weed?
-      hash["tags"].include?("legal weed")
+    def weather
+      puts "#{hash["info"]["weather"]["temperature"]["fahrenheit"]}"
     end
 
-    def internet_speed
-      hash["info"]["internet"]["speed"]["download"]
+    def weed?
+      # binding.pry
+      if hash["tags"].include?("legal weed")
+        puts "HELLz YA"
+      else
+        puts "nah"
+      end
+    end
+
+    def av_airbnb
+      puts "$#{hash["cost"]["airbnb_median"]["USD"]} USD"
+    end
+
+    def inet_speed
+      puts "#{hash["info"]["internet"]["speed"]["download"]}mbps"
     end
 
 end

@@ -16,18 +16,27 @@ class NomadCLI
   end
 
   def main(city)
-    puts "Welcome to #{city.city_name}!"
+    puts "Welcome to #{city.city_name}, #{city.country_name}!"
     puts "Choose an option from the menu to get started."
-
-    # Add conditionals to check for invalid responses
-
-    user_input = gets.strip
-
     puts "MENU: \n =========="
     puts "    1. Does my city have legal weed?"
     puts "    2. What's my city's average Airbnb price?"
     puts "    3. What's the weather like right now?"
-
+    puts "    4. What's the average internet speed?"
+    puts "=========="
+    print "Choose 1, 2, 3 or 4: "
+    user_input = gets.strip
+    if user_input.to_s == "1"
+      city.weed?
+    elsif user_input.to_s == "2"
+      city.av_airbnb
+    elsif user_input.to_s == "3"
+      city.weather
+    elsif user_input.to_s == "4"
+      city.inet_speed
+    else
+      puts "PLEASE PUT IN A VALID OPTION"
+    end
   end
 
 

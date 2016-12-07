@@ -13,20 +13,20 @@ class City
 
 
     def weed?
-      # binding.pry
       if hash["tags"].include?("legal weed")
-        puts "HELLz YA"
+        puts "HELLz YA".green
       else
-        puts "nah"
+        puts "nah".red
       end
+      sleep(0.5)
     end
 
     def av_airbnb
-      puts "$#{hash["cost"]["airbnb_median"]["USD"]} USD"
+      puts "$#{hash["cost"]["airbnb_median"]["USD"]} USD".green
     end
 
     def inet_speed
-      puts "#{hash["info"]["internet"]["speed"]["download"]}mbps"
+      puts "#{hash["info"]["internet"]["speed"]["download"]}mbps".green
     end
 
 end

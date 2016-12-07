@@ -5,7 +5,7 @@ class NomadAdapter
   attr_accessor :response, :data
 
   def initialize
-    @response = RestClient.get('https://nomadlist.com/api/v2/list/cities')
+    @response = RestClient.get('https://nomadlist.com/api/v2/list/cities', :timeout => 90000000)
     @data = JSON.parse(response)
   end
 
@@ -21,7 +21,7 @@ class NomadAdapter
     end
     airbnb_sorted.delete_if {|city| city["cost"]["airbnb_median"]["USD"] == 0}
     10.times do |index|
-      puts "#{index+1}. #{airbnb_sorted[index]["info"]["city"]["name"]} Airbnb listings cost $#{airbnb_sorted[index]["cost"]["airbnb_median"]["USD"]} on average"
+      puts "#{index+1}. #{airbnb_sorted[index]["info"]["city"]["name"]} Airbnb listings cost $#{airbnb_sorted[index]["cost"]["airbnb_median"]["USD"]} on average".green
      end
   end
 
@@ -30,7 +30,7 @@ class NomadAdapter
       city2["scores"]["lgbt_friendly"] <=> city1["scores"]["lgbt_friendly"]
     end
     10.times do |index|
-      puts "#{index+1}. #{lgbt_sorted[index]["info"]["city"]["name"]} - LGBT score: #{lgbt_sorted[index]["scores"]["lgbt_friendly"]}"
+      puts "#{index+1}. #{lgbt_sorted[index]["info"]["city"]["name"]} - LGBT score: #{lgbt_sorted[index]["scores"]["lgbt_friendly"]}".green
      end
   end
 
@@ -40,7 +40,7 @@ class NomadAdapter
       city2["info"]["internet"]["speed"]["download"] <=> city1["info"]["internet"]["speed"]["download"]
     end
     10.times do |index|
-      puts "#{index+1}. #{internet_sorted[index]["info"]["city"]["name"]} - Download speed: #{internet_sorted[index]["info"]["internet"]["speed"]["download"]} mbps"
+      puts "#{index+1}. #{internet_sorted[index]["info"]["city"]["name"]} - Download speed: #{internet_sorted[index]["info"]["internet"]["speed"]["download"]} mbps".green
      end
   end
 

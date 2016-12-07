@@ -1,11 +1,6 @@
-require 'bundler/setup'
-Bundler.require(:default, :development)
-$: << '.'
+require 'bundler'
+Bundler.require
 
-Dir["lib/concerns/*.rb"].each {|f| require f}
-Dir["lib/models/*.rb"].each {|f| require f}
-Dir["lib/data_fetchers/*.rb"].each {|f| require f}
-Dir["lib/runners/*.rb"].each {|f| require f}
-
-require "open-uri"
-require "json"
+require_relative '../lib/nomad_adapter'
+require_relative '../lib/nomad_cli'
+require_relative '../lib/city'

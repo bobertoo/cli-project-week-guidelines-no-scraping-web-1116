@@ -13,7 +13,7 @@ class NomadCLI
   end
 
   def choice
-    puts "\nEnter \'chart\' for top 10 charts, \'search\' to search for a city or \'exit\' to exit."
+    puts "\nEnter \'chart\' for top 10 charts, \'search\' to search for a city or \'exit\' to exit"
     print "\nEnter your command: "
     user_input = gets.strip
 
@@ -47,7 +47,7 @@ class NomadCLI
 
   def city_search
     print "\nEnter your city or type \'exit\' to cancel: "
-    city_query = gets.strip.capitalize
+    city_query = gets.strip.split(" ").map(&:capitalize).join(" ")
     if city_query == "Exit"
       puts "Returning to main menu...".red
       choice
